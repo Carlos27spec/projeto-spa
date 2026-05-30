@@ -9,16 +9,17 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(248, 137, 10, 0.781);
 }
 
 header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #CD1C18;
+    background-color: #000000;
     width: 100dvw;
     padding: 20px;
+    border: 1px solid black;
 }
 
 header>h1 {
@@ -36,16 +37,18 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: #FFA896;
+    background-color: #2c2c2c;
     padding: 50px 20px;
     gap: 60px;
+    border: solid 1px black;
 }
 
 .Menu>button {
     padding: 15px;
     width: 150px;
-    color: rgb(21, 104, 228);
+    color: rgb(0, 0, 0);
     border-radius: 10px;
+    background-color: #e6e6e6;
 }
 
 .Formulário {
@@ -62,9 +65,10 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #9B1313;
+    background-color: #000000;
     width: 100dvw;
     padding: 20px;
+    border: 1px solid black;
 }
 
 footer>h2 {
