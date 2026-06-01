@@ -22,10 +22,19 @@ header {
     border: 1px solid black;
 }
 
+header>img {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    height: 45px;
+}
+
 header>h1 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
 }
+
+
 
 main {
     display: flex;
@@ -49,6 +58,14 @@ main {
     color: rgb(0, 0, 0);
     border-radius: 10px;
     background-color: #e6e6e6;
+    transition: 200ms;
+}
+
+button:hover {
+    scale: 1.1;
+    background-color: orange;
+    color: aliceblue;
+    cursor: pointer;
 }
 
 .Formulário {
