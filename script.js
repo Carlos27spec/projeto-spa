@@ -71,11 +71,11 @@ document.getElementById("IMC").addEventListener("click", () => {
   card.innerHTML = `
     <h2>Calculo de IMC</h2>
 
-      <select id="genero">
-        <option value="">Selecione o gênero</option>
-        <option value="M">Masculino</option>
-        <option value="F">Feminino</option>
-      </select>
+    <select id="genero" onchange="limparCamposIMC()">
+      <option value="">Selecione o gênero</option>
+      <option value="M">Masculino</option>
+      <option value="F">Feminino</option>
+    </select>
 
     <div>
       <input type="number" id="peso" placeholder="Peso (kg)" />
@@ -86,6 +86,12 @@ document.getElementById("IMC").addEventListener("click", () => {
     </div>
   `;
 });
+
+function limparCamposIMC() {
+  document.getElementById("peso").value = "";
+  document.getElementById("altura").value = "";
+  document.getElementById("resultadoIMC").innerHTML = "";
+}
 
 function calcularIMC() {
   const peso = parseFloat(document.getElementById("peso").value);
@@ -122,26 +128,61 @@ function calcularIMC() {
   `;
 }
 
+// Conversor de Temperatura
 document.getElementById("Temp").addEventListener("click", () => {
   const card = document.getElementById("card");
 
   card.innerHTML = `
-    <h2>Converso de Temperatura</h2>
+    <h2>Conversor de Temperatura</h2>
 
-      <select id="temperatura">
-        <option value="">Defina a temperatura</option>
-        <option value="C">Celsius</option>
-        <option value="F">Fahrenheit</option>
-      </select>
+    <select id="temperatura" onchange="limparTemp()">
+      <option value="">Defina a temperatura</option>
+      <option value="C">Celsius → Fahrenheit</option>
+      <option value="F">Fahrenheit → Celsius</option>
+    </select>
 
     <div>
-      <input type="number" id="C" placeholder="Temperatura" />
-
+      <input type="number" id="C" placeholder="Digite a temperatura" />
       <button onclick="Converter()">Calcular</button>
       <p id="Temperaturaf"></p>
     </div>
   `;
 });
+
+function limparTemp() {
+  document.getElementById("C").value = "";
+  document.getElementById("Temperaturaf").innerHTML = "";
+}
+
+function Converter() {
+  const valorInput = parseFloat(document.getElementById("C").value);
+  const tipo = document.getElementById("temperatura").value;
+  const resultado = document.getElementById("Temperaturaf");
+
+  if (!tipo) {
+    resultado.innerHTML = "Selecione o tipo de temperatura!";
+    return;
+  }
+
+  if (isNaN(valorInput)) {
+    resultado.innerHTML = "Digite um valor válido!";
+    return;
+  }
+
+  let convertido, label;
+
+  if (tipo === "C") {
+    // Celsius → Fahrenheit
+    convertido = (valorInput * 1.8) / +32;
+    label = `${valorInput}°C = <strong>${convertido.toFixed(1)}°F</strong>`;
+  } else {
+    // Fahrenheit → Celsius
+    convertido = (valorInput - 32) / 1.8;
+    label = `${valorInput}°F = <strong>${convertido.toFixed(1)}°C</strong>`;
+  }
+
+  resultado.innerHTML = label;
+}
 
 document.querySelectorAll(".Menu button").forEach((btn) => {
   btn.addEventListener("click", () => {
