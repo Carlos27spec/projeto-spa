@@ -21,7 +21,7 @@ document.getElementById("Moedas").addEventListener("click", async () => {
   card.innerHTML = `
       <h2> Conversão de Moedas </h2>
       <p>Amém!</p>
-        <p class="cotacao-info">1 USD = R$ ${cotacao.toFixed(2)}</p>
+        <p class="cotacao-info">1 USD = ${cotacao.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</p>
 
         <div class="conversor-form">
             <input type="number" id="valor" placeholder="Digite o valor" />
@@ -36,16 +36,28 @@ document.getElementById("Moedas").addEventListener("click", async () => {
 });
 
 function converter() {
-  const valor = parseFloat(document.getElementById("valor").value);
+  const valor = parseFloat(
+    document.getElementById("valor").value.replace(",", "."),
+  );
   const dir = document.getElementById("direcao").value;
   const resultado = document.getElementById("resultado");
 
   if (isNaN(valor) || valor <= 0) {
-    resultado.textContent = " Digite um valor válido!";
+    resultado.textContent = "Digite um valor válido!";
     return;
   }
-  resultado.textContent =
-    dir === "usd-brl"
-      ? `R$ ${(valor * cotacao).toFixed(2)}`
-      : `US$ ${(valor / cotacao).toFixed(2)}`;
+
+  if (dir === "usd-brl") {
+    const convertido = (valor * cotacao).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    resultado.textContent = convertido;
+  } else {
+    const convertido = (valor / cotacao).toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+    resultado.textContent = convertido;
+  }
 }
