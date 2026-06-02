@@ -9,14 +9,14 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-color: rgba(248, 137, 10, 0.781);
+    background-color: rgba(255, 255, 255, 0.781);
 }
 
 header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #000000;
+    background-color: #bebebe;
     width: 100dvw;
     padding: 20px;
     border: 1px solid black;
@@ -34,7 +34,9 @@ header>h1 {
     color: white;
 }
 
-
+#isDark {
+    cursor: pointer;
+}
 
 main {
     display: flex;
@@ -46,7 +48,7 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: #2c2c2c;
+    background-color: #d1d1d1;
     padding: 50px 20px;
     gap: 60px;
     border: solid 1px black;
@@ -63,7 +65,7 @@ main {
 
 button:hover {
     scale: 1.1;
-    background-color: orange;
+    background-color: rgb(0, 0, 0);
     color: aliceblue;
     cursor: pointer;
 }
@@ -82,7 +84,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #000000;
+    background-color: #a3a3a3;
     width: 100dvw;
     padding: 20px;
     border: 1px solid black;
