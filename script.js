@@ -36,21 +36,50 @@ document.getElementById("Moedas").addEventListener("click", async () => {
     `;
 });
 
+function converter() {
+  const valor = parseFloat(
+    document.getElementById("valor").value.replace(",", "."),
+  );
+  const dir = document.getElementById("direcao").value;
+  const resultado = document.getElementById("resultado");
+
+  if (isNaN(valor) || valor <= 0) {
+    resultado.textContent = "Digite um valor válido!";
+    return;
+  }
+
+  if (dir === "usd-brl") {
+    const convertido = (valor * cotacao).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    resultado.textContent = convertido;
+  } else {
+    const convertido = (valor / cotacao).toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+    resultado.textContent = convertido;
+  }
+}
+
+//Calcular IMC OK!
+
 document.getElementById("IMC").addEventListener("click", () => {
   const card = document.getElementById("card");
 
   card.innerHTML = `
     <h2>Calculo de IMC</h2>
 
-    <div>
-      <input type="number" id="peso" placeholder="Peso (kg)" />
-      <input type="number" id="altura" placeholder="Altura (cm) — ex: 175" />
-
       <select id="genero">
         <option value="">Selecione o gênero</option>
         <option value="M">Masculino</option>
         <option value="F">Feminino</option>
       </select>
+
+    <div>
+      <input type="number" id="peso" placeholder="Peso (kg)" />
+      <input type="number" id="altura" placeholder="Altura (cm) — ex: 175" />
 
       <button onclick="calcularIMC()">Calcular</button>
       <p id="resultadoIMC"></p>
@@ -93,9 +122,30 @@ function calcularIMC() {
   `;
 }
 
+document.getElementById("Temp").addEventListener("click", () => {
+  const card = document.getElementById("card");
+
+  card.innerHTML = `
+    <h2>Converso de Temperatura</h2>
+
+      <select id="temperatura">
+        <option value="">Defina a temperatura</option>
+        <option value="C">Celsius</option>
+        <option value="F">Fahrenheit</option>
+      </select>
+
+    <div>
+      <input type="number" id="C" placeholder="Temperatura" />
+
+      <button onclick="Converter()">Calcular</button>
+      <p id="Temperaturaf"></p>
+    </div>
+  `;
+});
+
 document.querySelectorAll(".Menu button").forEach((btn) => {
   btn.addEventListener("click", () => {
-    if (btn.id !== "Moedas" && btn.id !== "IMC") {
+    if (btn.id !== "Moedas" && btn.id !== "IMC" && btn.id !== "Temp") {
       document.getElementById("card").innerHTML = `
         <h2>Em breve</h2>
         <p>Esperem as próximas atualizações</p>
