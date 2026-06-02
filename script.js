@@ -3,6 +3,7 @@ const Menu = document.getElementById("Menu");
 const url = `https://economia.awesomeapi.com.br/json/last/USD-BRL`;
 const toggleBtn = document.getElementById("isDark");
 
+//Moedas OK!
 let cotacao = null;
 
 async function conversao() {
@@ -61,3 +62,13 @@ function converter() {
     resultado.textContent = convertido;
   }
 }
+document.querySelectorAll(".Menu button").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (btn.id !== "Moedas") {
+      document.getElementById("card").innerHTML = `
+                <h2>Em breve</h2>
+                <p>Esperem as próximas atualizações</p>
+            `;
+    }
+  });
+});
