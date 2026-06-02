@@ -128,7 +128,7 @@ function calcularIMC() {
   `;
 }
 
-// Conversor de Temperatura
+// Conversor de Temperatura OK!
 document.getElementById("Temp").addEventListener("click", () => {
   const card = document.getElementById("card");
 
@@ -184,9 +184,64 @@ function Converter() {
   resultado.innerHTML = label;
 }
 
+//Velocidade!
+document.getElementById("Velo").addEventListener("click", () => {
+  const card = document.getElementById("card");
+
+  card.innerHTML = `
+    <h2>Velocímetro</h2>
+    <p>Conversão entre <strong>Km/h</strong> ↔ <strong>Milhas/h</strong></p>
+    <p>Fator: 1 km/h = 0.621371 mph</p>
+
+    <select id="direcaoVelo" onchange="limparVelo()">
+      <option value="km-mph">Km/h → Milhas/h</option>
+      <option value="mph-km">Milhas/h → Km/h</option>
+    </select>
+
+    <div>
+      <input type="number" id="valorVelo" placeholder="Digite o valor" />
+      <button onclick="converterVelo()">Converter</button>
+      <p id="resultadoVelo"></p>
+    </div>
+  `;
+});
+
+function limparVelo() {
+  document.getElementById("valorVelo").value = "";
+  document.getElementById("resultadoVelo").innerHTML = "";
+}
+
+function converterVelo() {
+  const valor = parseFloat(document.getElementById("valorVelo").value);
+  const dir = document.getElementById("direcaoVelo").value;
+  const resultado = document.getElementById("resultadoVelo");
+
+  if (isNaN(valor) || valor < 0) {
+    resultado.innerHTML = "Digite um valor válido!";
+    return;
+  }
+
+  let convertido, label;
+
+  if (dir === "km-mph") {
+    convertido = valor * 0.621371;
+    label = `${valor} km/h = <strong>${convertido.toFixed(2)} mph</strong>`;
+  } else {
+    convertido = valor / 0.621371;
+    label = `${valor} mph = <strong>${convertido.toFixed(2)} km/h</strong>`;
+  }
+
+  resultado.innerHTML = label;
+}
+
 document.querySelectorAll(".Menu button").forEach((btn) => {
   btn.addEventListener("click", () => {
-    if (btn.id !== "Moedas" && btn.id !== "IMC" && btn.id !== "Temp") {
+    if (
+      btn.id !== "Moedas" &&
+      btn.id !== "IMC" &&
+      btn.id !== "Temp" &&
+      btn.id !== "Velo"
+    ) {
       document.getElementById("card").innerHTML = `
         <h2>Em breve</h2>
         <p>Esperem as próximas atualizações</p>
