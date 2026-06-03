@@ -239,20 +239,22 @@ function converterVelo() {
 document.getElementById("MS").addEventListener("click", () => {
   const card = document.getElementById("card");
 
-  card.innerHTML = `  <h2>Balança</h2>
+  card.innerHTML = `
+    <h2>Balança</h2>
     <p>Conversão entre <strong>Quilogramas</strong> ↔ <strong>Libras</strong></p>
-    <p>Fator:1 kg = 2.20462 lbs</p>
+    <p>Fator: 1 kg = 2.20462 lbs</p>
 
     <select id="direcaoQM" onchange="limparQM()">
-      <option value="Quilogramas>Quilogramas → Libras</option>
+      <option value="Quilogramas">Quilogramas → Libras</option>
       <option value="Libras">Libras → Quilogramas</option>
     </select>
 
     <div>
       <input type="number" id="valorQM" placeholder="Digite o valor" />
-      <button onclick="converterVelo()">Converter</button>
+      <button onclick="converterQM()">Converter</button>
       <p id="resultadoQM"></p>
-    </div>`;
+    </div>
+  `;
 });
 
 function limparQM() {
@@ -260,7 +262,7 @@ function limparQM() {
   document.getElementById("resultadoQM").innerHTML = "";
 }
 
-function converterVelo() {
+function converterQM() {
   const valor = parseFloat(document.getElementById("valorQM").value);
   const dir = document.getElementById("direcaoQM").value;
   const resultado = document.getElementById("resultadoQM");
@@ -270,19 +272,18 @@ function converterVelo() {
     return;
   }
 
-  let convertido, label;
+  let label;
 
   if (dir === "Quilogramas") {
-    convertido = valor * 2.20462;
-    label = `${valor} Quilogramas = <strong>${convertido.toFixed(2)} LIbras</strong>`;
+    const convertido = valor * 2.20462;
+    label = `${valor} kg = <strong>${convertido.toFixed(2)} lbs</strong>`;
   } else {
-    convertido = valor / 2.20462;
-    label = `${valor} Libras = <strong>${convertido.toFixed(2)} Quilogramas</strong>`;
+    const convertido = valor / 2.20462;
+    label = `${valor} lbs = <strong>${convertido.toFixed(2)} kg</strong>`;
   }
 
   resultado.innerHTML = label;
 }
-
 document.querySelectorAll(".Menu button").forEach((btn) => {
   btn.addEventListener("click", () => {
     if (
@@ -290,7 +291,8 @@ document.querySelectorAll(".Menu button").forEach((btn) => {
       btn.id !== "IMC" &&
       btn.id !== "Temp" &&
       btn.id !== "Velo" &&
-      btn.id !== "MS"
+      btn.id !== "MS" &&
+      btn.id !== "Tres"
     ) {
       document.getElementById("card").innerHTML = `
         <h2>Em breve</h2>
