@@ -163,7 +163,6 @@ function Converter() {
     resultado.innerHTML = "Selecione o tipo de temperatura!";
     return;
   }
-  libras;
 
   if (isNaN(valorInput)) {
     resultado.innerHTML = "Digite um valor válido!";
@@ -173,11 +172,9 @@ function Converter() {
   let convertido, label;
 
   if (tipo === "C") {
-    // Celsius → Fahrenheit
-    convertido = (valorInput * 1.8) / +32;
+    convertido = valorInput * 1.8 + 32;
     label = `${valorInput}°C = <strong>${convertido.toFixed(1)}°F</strong>`;
   } else {
-    // Fahrenheit → Celsius
     convertido = (valorInput - 32) / 1.8;
     label = `${valorInput}°F = <strong>${convertido.toFixed(1)}°C</strong>`;
   }
@@ -205,6 +202,7 @@ document.getElementById("Velo").addEventListener("click", () => {
       <p id="resultadoVelo"></p>
     </div>
   `;
+  50;
 });
 
 function limparVelo() {
@@ -241,7 +239,7 @@ document.getElementById("MS").addEventListener("click", () => {
 
   card.innerHTML = `
     <h2>Balança</h2>
-    <p>Conversão entre <strong>Quilogramas</strong> ↔ <strong>Libras</strong></p>
+    <p>Conversão entre <strong>Quilogramas</strong> ↔ <strong50>Libras</strong></p>
     <p>Fator: 1 kg = 2.20462 lbs</p>
 
     <select id="direcaoQM" onchange="limparQM()">
