@@ -163,6 +163,7 @@ function Converter() {
     resultado.innerHTML = "Selecione o tipo de temperatura!";
     return;
   }
+  libras;
 
   if (isNaN(valorInput)) {
     resultado.innerHTML = "Digite um valor válido!";
@@ -184,7 +185,7 @@ function Converter() {
   resultado.innerHTML = label;
 }
 
-//Velocidade!
+//Velocidade OK!
 document.getElementById("Velo").addEventListener("click", () => {
   const card = document.getElementById("card");
 
@@ -234,13 +235,62 @@ function converterVelo() {
   resultado.innerHTML = label;
 }
 
+//Massa OK!
+document.getElementById("MS").addEventListener("click", () => {
+  const card = document.getElementById("card");
+
+  card.innerHTML = `  <h2>Balança</h2>
+    <p>Conversão entre <strong>Quilogramas</strong> ↔ <strong>Libras</strong></p>
+    <p>Fator:1 kg = 2.20462 lbs</p>
+
+    <select id="direcaoQM" onchange="limparQM()">
+      <option value="Quilogramas>Quilogramas → Libras</option>
+      <option value="Libras">Libras → Quilogramas</option>
+    </select>
+
+    <div>
+      <input type="number" id="valorQM" placeholder="Digite o valor" />
+      <button onclick="converterVelo()">Converter</button>
+      <p id="resultadoQM"></p>
+    </div>`;
+});
+
+function limparQM() {
+  document.getElementById("valorQM").value = "";
+  document.getElementById("resultadoQM").innerHTML = "";
+}
+
+function converterVelo() {
+  const valor = parseFloat(document.getElementById("valorQM").value);
+  const dir = document.getElementById("direcaoQM").value;
+  const resultado = document.getElementById("resultadoQM");
+
+  if (isNaN(valor) || valor < 0) {
+    resultado.innerHTML = "Digite um valor válido!";
+    return;
+  }
+
+  let convertido, label;
+
+  if (dir === "Quilogramas") {
+    convertido = valor * 2.20462;
+    label = `${valor} Quilogramas = <strong>${convertido.toFixed(2)} LIbras</strong>`;
+  } else {
+    convertido = valor / 2.20462;
+    label = `${valor} Libras = <strong>${convertido.toFixed(2)} Quilogramas</strong>`;
+  }
+
+  resultado.innerHTML = label;
+}
+
 document.querySelectorAll(".Menu button").forEach((btn) => {
   btn.addEventListener("click", () => {
     if (
       btn.id !== "Moedas" &&
       btn.id !== "IMC" &&
       btn.id !== "Temp" &&
-      btn.id !== "Velo"
+      btn.id !== "Velo" &&
+      btn.id !== "MS"
     ) {
       document.getElementById("card").innerHTML = `
         <h2>Em breve</h2>
