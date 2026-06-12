@@ -318,7 +318,7 @@ function calcularRegraDeTres() {
 
   const x = (b * c) / a;
 
- const xFormatado = parseFloat(x.toFixed(2));
+  const xFormatado = x.toLocaleString("pt-BR", { maximumFractionDigits: 2 });
 
   campoX.value = xFormatado;
 
