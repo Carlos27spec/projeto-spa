@@ -289,15 +289,17 @@ document.getElementById("Tres").addEventListener("click", () => {
 
   card.innerHTML = `
     <h2>Regra de Três</h2>
-    <p>Se <strong>A</strong> está para <strong>B</strong>, quanto é <strong>C</strong> para <strong>X</strong>?</p>
+    <p>Se <strong>A</strong> está para <strong>B</strong>, quanto <strong>C</strong> está para <strong>X</strong>?</p>
 
-    <div>
+    <div class="regra-grid">
       <input type="number" id="valorA" placeholder="A" />
       <input type="number" id="valorB" placeholder="B" />
       <input type="number" id="valorC" placeholder="C" />
+      <input type="text"   id="valorX" placeholder="X" disabled />
       <button onclick="calcularRegraDeTres()">Calcular</button>
-      <p id="resultadoTres"></p>
     </div>
+
+    <p id="resultadoTres"></p>
   `;
 });
 
@@ -305,16 +307,24 @@ function calcularRegraDeTres() {
   const a = parseFloat(document.getElementById("valorA").value);
   const b = parseFloat(document.getElementById("valorB").value);
   const c = parseFloat(document.getElementById("valorC").value);
+  const campoX = document.getElementById("valorX");
   const resultado = document.getElementById("resultadoTres");
 
   if (isNaN(a) || isNaN(b) || isNaN(c) || a === 0) {
-    resultado.innerHTML = "Preencha todos os campos corretamente!";
+    resultado.innerHTML = "⚠️ Preencha todos os campos corretamente!";
+    campoX.value = "";
     return;
   }
+
   const x = (b * c) / a;
-  
+
+  const xFormatado = Number.isInteger(x) ? x : x.toFixed(2);
+
+  campoX.value = xFormatado;
+
   resultado.innerHTML = `
-    Se ${a} → ${b}, então ${c} → <strong>${x.toFixed(2)}</strong>
+    <strong>${a}</strong> → <strong>${b}</strong><br>
+    <strong>${c}</strong> → <strong>${xFormatado}</strong>
   `;
 }
 document.querySelectorAll(".Menu button").forEach((btn) => {
