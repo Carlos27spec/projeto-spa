@@ -343,4 +343,14 @@ document.querySelectorAll(".Menu button").forEach((btn) => {
     }
   });
 });
+
+// Dark Mode OK!
+const isDarkBtn = document.getElementById("isDark");
+
+isDarkBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  
+  const isDark = document.body.classList.contains("dark");
+  isDarkBtn.src = isDark ? "sun-regular.png" : "moon-solid.png";
+});
 //O kaue passou aqui!
