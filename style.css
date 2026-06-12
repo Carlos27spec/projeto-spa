@@ -96,3 +96,174 @@ footer>h2 {
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+/* CSS para as funções! */
+#card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  padding: 30px;
+}
+
+#card h2 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.8rem;
+  color: #1a3a5c;
+  margin-bottom: 5px;
+}
+
+#card p {
+  font-size: 1rem;
+  color: #333;
+}
+
+#card input,
+#card select {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 2px solid #448cdf;
+  font-size: 1rem;
+  width: 200px;
+  outline: none;
+  transition: border 200ms;
+}
+
+#card input:focus,
+#card select:focus {
+  border-color: #0d5c91;
+}
+
+#card input:disabled {
+  background-color: #d0e8ff;
+  color: #1a3a5c;
+  font-weight: bold;
+  cursor: not-allowed;
+}
+
+#card button {
+  padding: 10px 25px;
+  border-radius: 8px;
+  border: none;
+  background-color: #448cdf;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+#card button:hover {
+  background-color: #0d5c91;
+  scale: 1.05;
+}
+
+.regra-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  justify-items: center;
+}
+
+.regra-grid button {
+  grid-column: 1 / -1;
+  width: 150px;
+}
+
+/* Resultado das funções */
+#resultadoTres,
+#resultadoIMC,
+#Temperaturaf,
+#resultadoVelo,
+#resultadoQM,
+#resultado {
+  font-size: 1.1rem;
+  color: #1a3a5c;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.cotacao-info {
+  font-size: 0.95rem;
+  color: #0d5c91;
+  font-style: italic;
+}
+
+.conversor-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* DARK MODE */
+body.dark {
+  background-color: #0d1b2e;
+}
+
+body.dark header {
+  background-color: #0a2540;
+}
+
+body.dark .Menu {
+  background-color: #0f2d4a;
+}
+
+body.dark .Menu > button {
+  background-color: #1a3a5c;
+  color: #cce4ff;
+}
+
+body.dark footer {
+  background-color: #060f1a;
+}
+
+body.dark #card h2 {
+  color: #cce4ff;
+}
+
+body.dark #card p {
+  color: #a0c4e8;
+}
+
+body.dark #card input,
+body.dark #card select {
+  background-color: #1a3a5c;
+  color: #cce4ff;
+  border-color: #2d6aad;
+}
+
+body.dark #card input:disabled {
+  background-color: #0f2d4a;
+  color: #7ab8f5;
+}
+
+body.dark #card button {
+  background-color: #2d6aad;
+}
+
+body.dark #card button:hover {
+  background-color: #1a4a80;
+}
+
+body.dark #resultadoTres,
+body.dark #resultadoIMC,
+body.dark #Temperaturaf,
+body.dark #resultadoVelo,
+body.dark #resultadoQM,
+body.dark #resultado {
+  color: #7ab8f5;
+}
+
+body.dark .cotacao-info {
+  color: #7ab8f5;
+}
+
+#isDark {
+  transition: transform 300ms;
+}
+
+body.dark #isDark {
+  filter: invert(1);
+}
