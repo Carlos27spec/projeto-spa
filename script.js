@@ -317,8 +317,7 @@ function calcularRegraDeTres() {
   }
 
   const x = (b * c) / a;
-
-  const xFormatado = x.toFixed(2).replace(".", ",").replace(/,00$/, "");
+  const xFormatado = x.toFixed(2).replace(".", ",").replace(/,00$/, ""); // ✅
 
   campoX.value = xFormatado;
 
