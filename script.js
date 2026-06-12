@@ -282,6 +282,41 @@ function converterQM() {
 
   resultado.innerHTML = label;
 }
+
+// Regra de Três OK!
+document.getElementById("Tres").addEventListener("click", () => {
+  const card = document.getElementById("card");
+
+  card.innerHTML = `
+    <h2>Regra de Três</h2>
+    <p>Se <strong>A</strong> está para <strong>B</strong>, quanto é <strong>C</strong> para <strong>X</strong>?</p>
+
+    <div>
+      <input type="number" id="valorA" placeholder="A" />
+      <input type="number" id="valorB" placeholder="B" />
+      <input type="number" id="valorC" placeholder="C" />
+      <button onclick="calcularRegraDeTres()">Calcular</button>
+      <p id="resultadoTres"></p>
+    </div>
+  `;
+});
+
+function calcularRegraDeTres() {
+  const a = parseFloat(document.getElementById("valorA").value);
+  const b = parseFloat(document.getElementById("valorB").value);
+  const c = parseFloat(document.getElementById("valorC").value);
+  const resultado = document.getElementById("resultadoTres");
+
+  if (isNaN(a) || isNaN(b) || isNaN(c) || a === 0) {
+    resultado.innerHTML = "Preencha todos os campos corretamente!";
+    return;
+  }
+  const x = (b * c) / a;
+  
+  resultado.innerHTML = `
+    Se ${a} → ${b}, então ${c} → <strong>${x.toFixed(2)}</strong>
+  `;
+}
 document.querySelectorAll(".Menu button").forEach((btn) => {
   btn.addEventListener("click", () => {
     if (
